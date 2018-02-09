@@ -19,13 +19,15 @@ class AsyncTask:
         f1 = open('bithumb_balnce.csv', 'a', encoding='utf-8')
         f2 = open('coinone_balance.csv', 'a', encoding='utf-8')
 #        f3 = open('korbit_balance.csv', 'a', encoding='utf-8')
+        f4 = open('bitfinex_balance.csv', 'a', encoding='utf-8')
 
         wr1 = csv.writer(f1)
         wr1.writerow(Name)
         wr2 = csv.writer(f2)
         wr2.writerow(Name)
 #        wr3 = csv.writer(f3)
-
+        wr4 = csv.writer(f4)
+        wr4.writerow(Name)
 
         while(counter < 3):                     #얼마나
             print('Process A')
@@ -56,6 +58,13 @@ class AsyncTask:
             wr3.writerow([Time_bit, BTC_bit, ETH_bit, XRP_bit, BCH_bit])
             '''
 
+            Time_finex = round(float(json.loads(urllib.request.urlopen('https://api.bitfinex.com/v1/pubticker/btcusd').read())['timestamp']))
+            BTC_finex = float(json.loads(urllib.request.urlopen('https://api.bitfinex.com/v1/pubticker/btcusd').read())['last_price'])
+            ETH_finex = float(json.loads(urllib.request.urlopen('https://api.bitfinex.com/v1/pubticker/ethusd').read())['last_price'])
+            XRP_finex = float(json.loads(urllib.request.urlopen('https://api.bitfinex.com/v1/pubticker/xrpusd').read())['last_price'])
+            BCH_finex = float(json.loads(urllib.request.urlopen('https://api.bitfinex.com/v1/pubticker/bchusd').read())['last_price'])
+
+            wr4.writerow([Time_finex, BTC_finex, ETH_finex, XRP_finex, BCH_finex])
             counter += 1
 
             print("Time: ", Time_thumb)
@@ -76,10 +85,19 @@ class AsyncTask:
             print("XRP: ", XRP_bit)
             print("BCH: ", BCH_bit)
             '''
+
+            print("Time: ", Time_finex)
+            print("BTC: ", BTC_finex)
+            print("ETH: ", ETH_finex)
+            print("XRP: ", XRP_finex)
+            print("BCH: ", BCH_finex)
+
             time.sleep(5)                       #몇초간격
         f1.close()
         f2.close()
 #        f3.close()
+        f4.close()
+
 
 def main():
     print('Async Function')
