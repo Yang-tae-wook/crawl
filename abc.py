@@ -29,7 +29,7 @@ class AsyncTask:
         wr4 = csv.writer(f4)
         wr4.writerow(Name)
 
-        while(counter < 3):                     #얼마나
+        while(True):                     #얼마나
             print('Process A')
 
             Time_thumb = round(float(json.loads(urllib.request.urlopen('https://api.bithumb.com/public/ticker/all').read())['data']['date']))
@@ -58,7 +58,7 @@ class AsyncTask:
             wr3.writerow([Time_bit, BTC_bit, ETH_bit, XRP_bit, BCH_bit])
             '''
 
-            Time_finex = round(float(json.loads(urllib.request.urlopen('https://api.bitfinex.com/v1/pubticker/btcusd').read())['timestamp']))
+            Time_finex = round(float(json.loads(urllib.request.urlopen('https://api.bitfinex.com/v1/pubticker/btcusd').read())['timestamp']))*1000
             BTC_finex = float(json.loads(urllib.request.urlopen('https://api.bitfinex.com/v1/pubticker/btcusd').read())['last_price'])
             ETH_finex = float(json.loads(urllib.request.urlopen('https://api.bitfinex.com/v1/pubticker/ethusd').read())['last_price'])
             XRP_finex = float(json.loads(urllib.request.urlopen('https://api.bitfinex.com/v1/pubticker/xrpusd').read())['last_price'])
@@ -92,7 +92,7 @@ class AsyncTask:
             print("XRP: ", XRP_finex)
             print("BCH: ", BCH_finex)
 
-            time.sleep(5)                       #몇초간격
+            time.sleep(10)                       #몇초간격
         f1.close()
         f2.close()
 #        f3.close()
