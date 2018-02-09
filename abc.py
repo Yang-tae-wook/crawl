@@ -15,14 +15,17 @@ class AsyncTask:
 
     def TaskA(self):
         counter = 0
+        Name = ['Timestamp', 'BTC', 'ETH', 'XRP', 'BCH']
         f1 = open('bithumb_balnce.csv', 'a', encoding='utf-8')
         f2 = open('coinone_balance.csv', 'a', encoding='utf-8')
 #        f3 = open('korbit_balance.csv', 'a', encoding='utf-8')
 
         wr1 = csv.writer(f1)
+        wr1.writerow(Name)
         wr2 = csv.writer(f2)
+        wr2.writerow(Name)
 #        wr3 = csv.writer(f3)
-        Name = ['Timestamp', 'BTC', 'ETH', 'XRP', 'BCH']
+
 
         while(counter < 3):                     #얼마나
             print('Process A')
@@ -32,7 +35,7 @@ class AsyncTask:
             ETH_thumb = int(json.loads(urllib.request.urlopen('https://api.bithumb.com/public/ticker/all').read())['data']['ETH']['closing_price'])
             XRP_thumb = int(json.loads(urllib.request.urlopen('https://api.bithumb.com/public/ticker/all').read())['data']['XRP']['closing_price'])
             BCH_thumb = int(json.loads(urllib.request.urlopen('https://api.bithumb.com/public/ticker/all').read())['data']['BCH']['closing_price'])
-            wr1.writerow(Name)
+
             wr1.writerow([Time_thumb, BTC_thumb, ETH_thumb, XRP_thumb, BCH_thumb])
 
             Time_one = int(json.loads(urllib.request.urlopen('https://api.bithumb.com/public/ticker/all').read())['data']['date'])
@@ -40,7 +43,7 @@ class AsyncTask:
             ETH_one = int(json.loads(urllib.request.urlopen('https://api.coinone.co.kr/ticker/?currency=all').read())['eth']['last'])
             XRP_one = int(json.loads(urllib.request.urlopen('https://api.coinone.co.kr/ticker/?currency=all').read())['xrp']['last'])
             BCH_one = int(json.loads(urllib.request.urlopen('https://api.coinone.co.kr/ticker/?currency=all').read())['bch']['last'])
-            wr2.writerow(Name)
+
             wr2.writerow([Time_one, BTC_one, ETH_one, XRP_one, BCH_one])
 
             '''
