@@ -35,7 +35,7 @@ class AsyncTask:
 
             Time_thumb = round(float(json.loads(urllib.request.urlopen('https://api.bithumb.com/public/ticker/all').read())['data']['date']))
             #BTC_thumb = int(json.loads(urllib.request.urlopen('https://api.bithumb.com/public/ticker/all').read())['data']['BTC']['closing_price'])
-            ETH_thumb = int(json.loads(urllib.request.urlopen('https://api.bithumb.com/public/ticker/all').read())['data']['ETH']['closing_price'])
+            ETH_thumb = float(json.loads(urllib.request.urlopen('https://api.bithumb.com/public/ticker/all').read())['data']['ETH']['closing_price'])
             #XRP_thumb = int(json.loads(urllib.request.urlopen('https://api.bithumb.com/public/ticker/all').read())['data']['XRP']['closing_price'])
             #BCH_thumb = int(json.loads(urllib.request.urlopen('https://api.bithumb.com/public/ticker/all').read())['data']['BCH']['closing_price'])
 
@@ -43,7 +43,7 @@ class AsyncTask:
 
             Time_one = round(float(json.loads(urllib.request.urlopen('https://api.bithumb.com/public/ticker/all').read())['data']['date']))
             #BTC_one = int(json.loads(urllib.request.urlopen('https://api.coinone.co.kr/ticker/?currency=all').read())['btc']['last'])
-            ETH_one = int(json.loads(urllib.request.urlopen('https://api.coinone.co.kr/ticker/?currency=all').read())['eth']['last'])
+            ETH_one = float(json.loads(urllib.request.urlopen('https://api.coinone.co.kr/ticker/?currency=all').read())['eth']['last'])
             #XRP_one = int(json.loads(urllib.request.urlopen('https://api.coinone.co.kr/ticker/?currency=all').read())['xrp']['last'])
             #BCH_one = int(json.loads(urllib.request.urlopen('https://api.coinone.co.kr/ticker/?currency=all').read())['bch']['last'])
 
@@ -63,7 +63,7 @@ class AsyncTask:
             readETH = urlopen(reqETH).read()
             jsonETH = json.loads(readETH)
             FindETH = jsonETH['last']
-            ETH_bit = int(FindETH)
+            ETH_bit = float(FindETH)
             '''
             reqXRP = Request('https://api.korbit.co.kr/v1/ticker?currency_pair=xrp_krw' , headers={'User-Agent': 'Mozilla/5.0'})
             readXRP = urlopen(reqXRP).read()
@@ -91,28 +91,28 @@ class AsyncTask:
             wr4.writerow([Time_finex, ETH_finex])
             counter += 1
 
-            print("Time: ", Time_thumb)
+            #print("Time: ", Time_thumb)
             #print("BTC: ", BTC_thumb)
-            print("ETH: ", ETH_thumb)
+            #print("ETH: ", ETH_thumb)
             #print("XRP: ", XRP_thumb)
             #print("BCH: ", BCH_thumb)
 
-            print("Time: ", Time_one)
+            #print("Time: ", Time_one)
             #print("BTC: ", BTC_one)
-            print("ETH: ", ETH_one)
+            #print("ETH: ", ETH_one)
             #print("XRP: ", XRP_one)
             #print("BCH: ", BCH_one)
 
-            print("Time: ", Time_bit)
+            #print("Time: ", Time_bit)
             #print("BTC: ", BTC_bit)
-            print("ETH: ", ETH_bit)
+            #print("ETH: ", ETH_bit)
             #print("XRP: ", XRP_bit)
             #print("BCH: ", BCH_bit)
 
 
             print("Time: ", Time_finex)
             #print("BTC: ", BTC_finex)
-            print("ETH: ", ETH_finex)
+            #print("ETH: ", ETH_finex)
             #print("XRP: ", XRP_finex)
             #print("BCH: ", BCH_finex)
 
