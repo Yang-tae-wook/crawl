@@ -17,10 +17,10 @@ class AsyncTask:
         wr = csv.writer(f)
         wr.writerow(Name)
 
-        end = 1518149797000
+        end = 1518412899000
 
         while(end > 1458149797000):
-            url = 'https://api.bitfinex.com/v2/candles/trade:5m:tBTCUSD/hist'
+            url = 'https://api.bitfinex.com/v2/candles/trade:5m:tETHUSD/hist'
             params = { 'start': end-35700000, 'end': end }
             r = requests.get(url, params = params)
             data = r.json()
