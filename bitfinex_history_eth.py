@@ -10,7 +10,7 @@ class AsyncTask:
         pass
 
     def TaskA(self):
-        counter = 0
+        counter = 1
         Name = ['Timestamp', 'OPEN', 'CLOSE', 'HIGH', 'LOW', 'VOLUMN']
         f = open('bitfinex_hist_eth.csv', 'w', encoding='utf-8')
 
@@ -24,12 +24,12 @@ class AsyncTask:
             params = { 'start': end-35700000, 'end': end }
             r = requests.get(url, params = params)
             data = r.json()
-            print(data)
+            print(counter)
             end = end - 35700000
             for row in data:
                 #print(row)
                 wr.writerow(row)
-
+            counter += 1
             time.sleep(5)
         f.close()
 
