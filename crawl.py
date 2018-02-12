@@ -34,87 +34,87 @@ class AsyncTask:
             print('Process A')
 
             Time_thumb = round(float(json.loads(urllib.request.urlopen('https://api.bithumb.com/public/ticker/all').read())['data']['date']))
-            #BTC_thumb = int(json.loads(urllib.request.urlopen('https://api.bithumb.com/public/ticker/all').read())['data']['BTC']['closing_price'])
-            ETH_thumb = int(json.loads(urllib.request.urlopen('https://api.bithumb.com/public/ticker/all').read())['data']['ETH']['closing_price'])
-            #XRP_thumb = int(json.loads(urllib.request.urlopen('https://api.bithumb.com/public/ticker/all').read())['data']['XRP']['closing_price'])
-            #BCH_thumb = int(json.loads(urllib.request.urlopen('https://api.bithumb.com/public/ticker/all').read())['data']['BCH']['closing_price'])
+            BTC_thumb = float(json.loads(urllib.request.urlopen('https://api.bithumb.com/public/ticker/all').read())['data']['BTC']['closing_price'])
+            ETH_thumb = float(json.loads(urllib.request.urlopen('https://api.bithumb.com/public/ticker/all').read())['data']['ETH']['closing_price'])
+            XRP_thumb = float(json.loads(urllib.request.urlopen('https://api.bithumb.com/public/ticker/all').read())['data']['XRP']['closing_price'])
+            BCH_thumb = float(json.loads(urllib.request.urlopen('https://api.bithumb.com/public/ticker/all').read())['data']['BCH']['closing_price'])
 
             wr1.writerow([Time_thumb, ETH_thumb])
 
             Time_one = round(float(json.loads(urllib.request.urlopen('https://api.bithumb.com/public/ticker/all').read())['data']['date']))
-            #BTC_one = int(json.loads(urllib.request.urlopen('https://api.coinone.co.kr/ticker/?currency=all').read())['btc']['last'])
-            ETH_one = int(json.loads(urllib.request.urlopen('https://api.coinone.co.kr/ticker/?currency=all').read())['eth']['last'])
-            #XRP_one = int(json.loads(urllib.request.urlopen('https://api.coinone.co.kr/ticker/?currency=all').read())['xrp']['last'])
-            #BCH_one = int(json.loads(urllib.request.urlopen('https://api.coinone.co.kr/ticker/?currency=all').read())['bch']['last'])
+            BTC_one = float(json.loads(urllib.request.urlopen('https://api.coinone.co.kr/ticker/?currency=all').read())['btc']['last'])
+            ETH_one = float(json.loads(urllib.request.urlopen('https://api.coinone.co.kr/ticker/?currency=all').read())['eth']['last'])
+            XRP_one = float(json.loads(urllib.request.urlopen('https://api.coinone.co.kr/ticker/?currency=all').read())['xrp']['last'])
+            BCH_one = float(json.loads(urllib.request.urlopen('https://api.coinone.co.kr/ticker/?currency=all').read())['bch']['last'])
 
             wr2.writerow([Time_one, ETH_one])
 
 
 
             Time_bit = round(float(json.loads(urllib.request.urlopen('https://api.bithumb.com/public/ticker/all').read())['data']['date']))
-            '''
+
             reqBTC = Request('https://api.korbit.co.kr/v1/ticker?currency_pair=btc_krw' , headers={'User-Agent': 'Mozilla/5.0'})
             readBTC = urlopen(reqBTC).read()
             jsonBTC = json.loads(readBTC)
             FindBTC = jsonBTC['last']
-            BTC_bit = int(FindBTC)
-            '''
+            BTC_bit = float(FindBTC)
+
             reqETH = Request('https://api.korbit.co.kr/v1/ticker?currency_pair=eth_krw' , headers={'User-Agent': 'Mozilla/5.0'})
             readETH = urlopen(reqETH).read()
             jsonETH = json.loads(readETH)
             FindETH = jsonETH['last']
-            ETH_bit = int(FindETH)
-            '''
+            ETH_bit = float(FindETH)
+
             reqXRP = Request('https://api.korbit.co.kr/v1/ticker?currency_pair=xrp_krw' , headers={'User-Agent': 'Mozilla/5.0'})
             readXRP = urlopen(reqXRP).read()
             jsonXRP = json.loads(readXRP)
             FindXRP = jsonXRP['last']
-            XRP_bit = int(FindXRP)
+            XRP_bit = float(FindXRP)
 
             reqBCH = Request('https://api.korbit.co.kr/v1/ticker?currency_pair=bch_krw' , headers={'User-Agent': 'Mozilla/5.0'})
             readBCH = urlopen(reqBCH).read()
             jsonBCH = json.loads(readBCH)
             FindBCH = jsonBCH['last']
-            BCH_bit = int(FindBCH)
-            '''
+            BCH_bit = float(FindBCH)
+
 
             wr3.writerow([Time_bit, ETH_bit])
 
 
 
             Time_finex = round(float(json.loads(urllib.request.urlopen('https://api.bitfinex.com/v1/pubticker/btcusd').read())['timestamp']))*1000
-            #BTC_finex = float(json.loads(urllib.request.urlopen('https://api.bitfinex.com/v1/pubticker/btcusd').read())['last_price'])
+            BTC_finex = float(json.loads(urllib.request.urlopen('https://api.bitfinex.com/v1/pubticker/btcusd').read())['last_price'])
             ETH_finex = float(json.loads(urllib.request.urlopen('https://api.bitfinex.com/v1/pubticker/ethusd').read())['last_price'])
-            #XRP_finex = float(json.loads(urllib.request.urlopen('https://api.bitfinex.com/v1/pubticker/xrpusd').read())['last_price'])
-            #BCH_finex = float(json.loads(urllib.request.urlopen('https://api.bitfinex.com/v1/pubticker/bchusd').read())['last_price'])
+            XRP_finex = float(json.loads(urllib.request.urlopen('https://api.bitfinex.com/v1/pubticker/xrpusd').read())['last_price'])
+            BCH_finex = float(json.loads(urllib.request.urlopen('https://api.bitfinex.com/v1/pubticker/bchusd').read())['last_price'])
 
             wr4.writerow([Time_finex, ETH_finex])
             counter += 1
 
             print("Time: ", Time_thumb)
-            #print("BTC: ", BTC_thumb)
+            print("BTC: ", BTC_thumb)
             print("ETH: ", ETH_thumb)
-            #print("XRP: ", XRP_thumb)
-            #print("BCH: ", BCH_thumb)
+            print("XRP: ", XRP_thumb)
+            print("BCH: ", BCH_thumb)
 
             print("Time: ", Time_one)
-            #print("BTC: ", BTC_one)
+            print("BTC: ", BTC_one)
             print("ETH: ", ETH_one)
-            #print("XRP: ", XRP_one)
-            #print("BCH: ", BCH_one)
+            print("XRP: ", XRP_one)
+            print("BCH: ", BCH_one)
 
             print("Time: ", Time_bit)
-            #print("BTC: ", BTC_bit)
+            print("BTC: ", BTC_bit)
             print("ETH: ", ETH_bit)
-            #print("XRP: ", XRP_bit)
-            #print("BCH: ", BCH_bit)
+            print("XRP: ", XRP_bit)
+            print("BCH: ", BCH_bit)
 
 
             print("Time: ", Time_finex)
-            #print("BTC: ", BTC_finex)
+            print("BTC: ", BTC_finex)
             print("ETH: ", ETH_finex)
-            #print("XRP: ", XRP_finex)
-            #print("BCH: ", BCH_finex)
+            print("XRP: ", XRP_finex)
+            print("BCH: ", BCH_finex)
 
             time.sleep(10)                       #몇초간격
         f1.close()

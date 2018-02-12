@@ -12,7 +12,7 @@ class AsyncTask:
     def TaskA(self):
         counter = 0
         Name = ['Timestamp', 'OPEN', 'CLOSE', 'HIGH', 'LOW', 'VOLUMN']
-        f = open('bitfinex_hist.csv', 'w', encoding='utf-8')
+        f = open('bitfinex_hist_btc.csv', 'w', encoding='utf-8')
 
         wr = csv.writer(f)
         wr.writerow(Name)
