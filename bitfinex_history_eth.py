@@ -24,35 +24,39 @@ class AsyncTask:
         end = 1519788177000
 
         while(end > 1506816000000):
-            coin_type=["ETH", "QTM"]
-
-            for i in coin_type:
-                url = "https://api.bitfinex.com/v2/candles/trade:5m:t"+i+"USD/hist"
 
 
-                params = { 'start': end-35700000, 'end': end }
-                r = requests.get(url, params = params)
-                data = r.json()
-                print(data)
-                end = end - 35700000
+            url1 = "https://api.bitfinex.com/v2/candles/trade:5m:tETHUSD/hist"
+            url2 = "https://api.bitfinex.com/v2/candles/trade:5m:tQTMUSD/hist"
 
-                data_arr = np.array(data)
 
-                close_data = data_arr[:,0:3:2]
-                print(close_data)
+            params = { 'start': end-35700000, 'end': end }
+            r1 = requests.get(url1, params = params)
+            r2 = requests.get(url2, params = params)
+            data1 = r1.json()
+            data2 = r2.json()
+            print(data1)
+            print(data2)
+            end = end - 35700000
 
-                for row in close_data:
-                    print(row)
-                    if i == "ETH":
-                        wr1.writerow(row)
-                    else:
-                        wr2.writerow(row)
+            data_arr1 = np.array(data1)
+            data_arr2 = np.array(data2)
+
+
+            close_data1 = data_arr1[:,0:3:2]
+            print(close_data1)
+            close_data2 = data_arr2[:,0:3:2]
+            print(close_data2)
+
+            for row in close_data1:
+                wr1.writerow(row)
+            for row in close_data2:
+                wr2.writerow(row)
 
 
 
 
             time.sleep(10)
-
         f.close()
 
 
