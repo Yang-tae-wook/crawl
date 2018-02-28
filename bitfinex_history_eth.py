@@ -51,7 +51,7 @@ class AsyncTask:
 
 
 
-            time.sleep(5)
+            time.sleep(10)
 
         f.close()
 
